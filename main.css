@@ -1,0 +1,127 @@
+@charset "UTF-8";
+/* google fonts */
+@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
+@import url("https://fonts.googleapis.com/css?family=Cabin");
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+/*octicons*/
+@import "octicons/octicons.css";
+
+body {
+  overflow-x: hidden; /* hiding horizontal scrollbar that shows during the animation of the menu */
+}
+
+header > h1 {
+  font-family: 'Titillium Web', sans-serif;
+  margin-bottom: 0;
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+header > h2 {
+  font-family: 'Titillium Web', sans-serif;
+  margin-top: 2px;
+  color: #555;
+  font-size: 1.17em;
+  font-weight: bold;
+}
+header {
+  text-align: center;
+}
+nav > ul li
+{
+  display: inline-block;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-color: #9a9a9a;
+}
+.nav_lastitem
+{
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: #9a9a9a;
+}
+nav > ul
+{
+  list-style-type: none;
+  padding: 0 !important;
+}
+nav
+{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: 'Cabin', sans-serif;
+  color: #555;
+}
+nav a, nav a:visited
+{
+  color: #555;
+}
+
+a { text-decoration: none;} /* workaround http://stackoverflow.com/a/4910041 */
+
+nav a:hover, nav a:active, .active
+{
+  color: #e74c3c;
+  text-decoration: none !important;
+}
+
+hr {
+  /* Found there : https://css-tricks.com/examples/hrs/ */
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(220 , 220 ,220) , rgba(0, 0, 0, 0));
+}
+
+article
+{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+article > h1
+{
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.article_meta
+{
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.article_body
+{
+  font-family: 'Oxygen', sans-serif;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  line-height: 1.7em;
+}
+
+footer
+{
+  margin-top: 12px;
+  margin-bottom: 12px;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 0.85em;
+  text-align: center;
+  color: #555;
+}
+
+footer > .heart
+{
+  color: #e74c3c !important;
+}
+
+.animated
+{
+  animation-duration: 0.6s !important;
+}
