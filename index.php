@@ -5,7 +5,7 @@ setlocale(LC_TIME, "fr_FR.UTF-8");
 $db = db_connect();
 $article = get_last_article($db);
 
-if (file_exists($article['path']) AND preg_match("/\/var\/www\/darkgallium\.beta\/art\/\w+\/\w+\.htm/",$article['path'])==1) {
+if (file_exists($article['path']) AND preg_match("/". str_replace('/','\/',$config['working_path'])."art\/\w+\/\w+\.htm/",$article['path'])==1) {
   $article_body = file_get_contents($article['path']);
 }
 else {
@@ -21,6 +21,7 @@ else {
 
 
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="main.css" rel="stylesheet">
 
