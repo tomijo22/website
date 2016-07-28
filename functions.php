@@ -1,23 +1,6 @@
 <?php
 include 'config.beta.php';
-/*
-function list_articles()
-{
-  $output = array();
-  foreach( new RecursiveIteratorIterator(
-      new RecursiveDirectoryIterator( 'art/', FilesystemIterator::SKIP_DOTS | FilesystemIterator::UNIX_PATHS ) ) as $value ) {
-          if ( $value->isFile() ) {
-              $output[] = array( $value->getMTime(), $value->getRealPath() );
-          }
-  }
-
-  usort ( $output, function( $a, $b ) {
-      return $a[0] > $b[0];
-  });
-
-  return $output;
-}
-*/
+setlocale(LC_TIME, "fr_FR.UTF-8");
 
 function db_connect()
 {

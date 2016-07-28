@@ -1,11 +1,10 @@
 <?php
 include 'functions.php';
-setlocale(LC_TIME, "fr_FR.UTF-8");
 
 $db = db_connect();
 $article = get_last_article($db);
 
-if (file_exists($article['path']) AND preg_match("/". str_replace('/','\/',$config['working_path'])."art\/\w+\/\w+\.htm/",$article['path'])==1) {
+if (file_exists($article['path']) AND preg_match("/" . str_replace('/','\/',$config['working_path']) . "art\/\w+\/\w+\.htm/",$article['path'])==1) {
   $article_body = file_get_contents($article['path']);
 }
 else {
@@ -19,7 +18,6 @@ else {
   <head>
     <title>~darkgallium</title>
 
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,16 +26,7 @@ else {
   </head>
   <body>
 
-    <header>
-      <h1 id="site_title">~darkgallium</h1>
-      <h2>the greyscale blog</h2>
-    </header>
-
-    <nav id="main_navbar">
-      <ul>
-        <li></li>
-      </ul>
-    </nav>
+    <?php include ('parts/header.php'); ?>
 
     <hr>
 
@@ -51,9 +40,7 @@ else {
 
     <hr>
 
-    <footer>
-      <span class="octicon octicon-code"></span> avec <span class="octicon octicon-heart"></span>
-    </footer>
+    <?php include ('parts/footer.php'); ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="menubar.js"></script>
