@@ -1,14 +1,28 @@
 @charset "UTF-8";
-/* google fonts */
-@import url("https://fonts.googleapis.com/css?family=Titillium+Web");
-@import url("https://fonts.googleapis.com/css?family=Cabin");
-@import url("https://fonts.googleapis.com/css?family=Oswald");
-@import url('https://fonts.googleapis.com/css?family=Oxygen');
-/*octicons*/
+
+/* BEGIN VARIOUS IMPORTS SECTION */
+
+@import url("https://fonts.googleapis.com/css?family=Cabin|Oswald|Oxygen|Titillium+Web");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
 @import "octicons/octicons.css";
 
-body {
-  overflow-x: hidden; /* hiding horizontal scrollbar that shows during the animation of the menu */
+/* END VARIOUS IMPORTS SECTION */
+
+/* BEGIN GLOBAL PROPERTIES SECTION */
+
+a { text-decoration: none;}
+
+.animated
+{
+  animation-duration: 0.6s !important;
+}
+
+/* END GLOBAL PROPERTIES SECTION */
+
+/* BEGIN HEADER AND NAVBAR SECTION */
+
+header {
+  text-align: center;
 }
 
 header > h1 {
@@ -18,6 +32,7 @@ header > h1 {
   margin-left: auto;
   margin-right: auto;
 }
+
 header > h2 {
   font-family: 'Titillium Web', sans-serif;
   margin-top: 2px;
@@ -25,9 +40,16 @@ header > h2 {
   font-size: 1.17em;
   font-weight: bold;
 }
-header {
+
+nav
+{
+  margin-top: 30px;
+  margin-bottom: 25px;
   text-align: center;
+  font-family: 'Cabin', sans-serif;
+  color: #555;
 }
+
 nav > ul li
 {
   display: inline-block;
@@ -37,31 +59,31 @@ nav > ul li
   border-left-width: 1px;
   border-color: #9a9a9a;
 }
+
+nav > ul
+{
+  list-style-type: none;
+  padding: 0 !important;
+}
+
+@media screen and (max-width: 640px) {
+  nav li {
+    margin-bottom: 7px;
+    /* this adds a margin between two lines of menu items on small definition screens*/
+  }
+}
+
 .nav_lastitem
 {
   border-right-style: solid;
   border-right-width: 1px;
   border-color: #9a9a9a;
 }
-nav > ul
-{
-  list-style-type: none;
-  padding: 0 !important;
-}
-nav
-{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  text-align: center;
-  font-family: 'Cabin', sans-serif;
-  color: #555;
-}
+
 nav a, nav a:visited
 {
   color: #555;
 }
-
-a { text-decoration: none;} /* workaround http://stackoverflow.com/a/4910041 */
 
 nav a:hover, nav a:active, .active
 {
@@ -69,17 +91,21 @@ nav a:hover, nav a:active, .active
   text-decoration: none !important;
 }
 
+/* END HEADER AND NAVBAR SECTION */
+
 hr {
-  /* Found there : https://css-tricks.com/examples/hrs/ */
     border: 0;
     height: 1px;
+    /* gradiant trick found there : https://css-tricks.com/examples/hrs/ */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(220 , 220 ,220) , rgba(0, 0, 0, 0));
 }
+
+/* BEGIN ARTICLE SECTION */
 
 article
 {
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 }
 
 article > h1
@@ -106,6 +132,10 @@ article > h1
   line-height: 1.7em;
 }
 
+/* END ARTICLE SECTION */
+
+/* BEGIN FOOTER SECTION */
+
 footer
 {
   margin-top: 12px;
@@ -113,7 +143,7 @@ footer
   font-family: 'Titillium Web', sans-serif;
   font-size: 0.85em;
   text-align: center;
-  color: #555;
+  color: #9a9a9a;
 }
 
 footer > .heart
@@ -121,7 +151,4 @@ footer > .heart
   color: #e74c3c !important;
 }
 
-.animated
-{
-  animation-duration: 0.6s !important;
-}
+/* END FOOTER SECTION */

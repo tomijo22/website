@@ -22,7 +22,6 @@ else {
 
     <meta charset="utf-8">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" rel="stylesheet">
     <link href="main.css" rel="stylesheet">
 
   </head>
@@ -30,7 +29,7 @@ else {
 
     <header>
       <h1 id="site_title">~darkgallium</h1>
-      <h2>only human</h2>
+      <h2>the greyscale blog</h2>
     </header>
 
     <nav id="main_navbar">
