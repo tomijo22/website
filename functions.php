@@ -24,4 +24,16 @@ function get_last_article($db)
   $data = $response->fetch();
   return $data;
 }
+
+function get_articles_cat()
+{
+  $file = file_get_contents("menu.json");
+  $list = json_decode($file,true)["articles"];
+  unset($list["retour"]);
+  $result = array(0 => null);
+  foreach ($list as $key => $unused) {
+    array_push($result,$key);
+  }
+  return $result;
+}
 ?>

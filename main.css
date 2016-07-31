@@ -17,6 +17,10 @@ a { text-decoration: none;}
   animation-duration: 0.6s !important;
 }
 
+#content {
+  min-height: calc(100vh - 255px);
+}
+
 /* END GLOBAL PROPERTIES SECTION */
 
 /* BEGIN HEADER AND NAVBAR SECTION */
@@ -80,24 +84,36 @@ nav > ul
   border-color: #9a9a9a;
 }
 
-nav a, nav a:visited
+a, a:visited
 {
   color: #555;
 }
 
-nav a:hover, nav a:active, .active
+a:hover, a:active
 {
   color: #e74c3c;
   text-decoration: none !important;
 }
 
+.active
+{
+  color: #e74c3c !important;
+}
+
 /* END HEADER AND NAVBAR SECTION */
 
-hr {
+hr.gradiant-sep {
     border: 0;
     height: 1px;
     /* gradiant trick found there : https://css-tricks.com/examples/hrs/ */
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(220 , 220 ,220) , rgba(0, 0, 0, 0));
+}
+
+hr.plain-sep {
+  width: 100px;
+  border: 0;
+  height: 1px;
+  background-color: #555;
 }
 
 /* BEGIN ARTICLE SECTION */
@@ -105,7 +121,7 @@ hr {
 article
 {
   margin-top: 25px;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 }
 
 article > h1
@@ -122,6 +138,11 @@ article > h1
   text-align: center;
 }
 
+.article_meta abbr {
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
 .article_body
 {
   font-family: 'Oxygen', sans-serif;
@@ -134,16 +155,54 @@ article > h1
 
 /* END ARTICLE SECTION */
 
+/* BEGIN LIST SECTION */
+
+.cat_heading {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.cat_heading h2 {
+  color: black;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1.75em;
+  margin-bottom: 0;
+
+}
+
+.cat_heading .sub {
+  color: #555;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* END LIST SECTION */
+
+/* BEGIN CONTEXT SECTION */
+
+.info {
+  color: #555;
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1em;
+  margin-top: 22vh;
+  text-align: center;
+}
+
+
+/* END CONTEXT SECTION /*
+
 /* BEGIN FOOTER SECTION */
 
 footer
 {
-  margin-top: 12px;
-  margin-bottom: 12px;
+  margin-top: 14px;
+  margin-bottom: 0;
   font-family: 'Titillium Web', sans-serif;
-  font-size: 0.85em;
+  font-size: 0.9em;
   text-align: center;
   color: #9a9a9a;
+  height: 30px;
 }
 
 footer > .heart

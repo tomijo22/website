@@ -12,7 +12,7 @@ function findLastItem(a) {
 }
 
 
-function menu(name) {
+function menu(name,currPage) {
   var items = ["main","articles","projects"];
 
   if ($.inArray(name,items)>-1) {
@@ -24,7 +24,12 @@ function menu(name) {
 
         $.each(json[name], function(key,data) {
           var menuObject = json[name];
-          if (key!=findLastItem(menuObject)) {
+
+          if (key==currPage) {
+            /* "+data+" */
+            result+="<li><a href=\"#\" class=\"link active\" data-location=\""+key+"\">"+key+"</a></li>";
+          }
+          else if (key!=findLastItem(menuObject)) {
             result+="<li><a href=\""+data+"\" class=\"link\" data-location=\""+key+"\">"+key+"</a></li>";
           }
           else {
@@ -54,5 +59,5 @@ $(document).on('click', '.link', function () { // workaround found there : http:
 });
 
 $(document).ready(function() {
-    menu('main');
+    $.ajaxSetup({ cache: false });
 });

@@ -8,12 +8,12 @@
     "github":"https://github.com/darkgallium"
   },
   "articles":{
-    "politique":"/list.php?c=1",
-    "tribunes":"/list.php?c=2",
-    "protips":"/list.php?c=3",
-    "tutoriels":"/list.php?c=4",
-    "testing":"/list.php?c=5",
-    "inclassables":"/list.php?c=6",
+    "politique":"list.php?c=1",
+    "tribunes":"list.php?c=2",
+    "protips":"list.php?c=3",
+    "tutoriels":"list.php?c=4",
+    "testing":"list.php?c=5",
+    "inclassables":"list.php?c=6",
     "retour":"#"
   },
   "projects": {

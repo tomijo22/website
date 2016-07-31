@@ -28,8 +28,6 @@ else {
 
     <?php include ('parts/header.php'); ?>
 
-    <hr>
-
     <article>
       <h1><?php printf($article['title']); ?></h1>
       <div class="article_meta">publié le <?php echo strftime("%e %B %Y", strtotime($article['date'])); ?> dans <?php printf($article['cat']); ?></div>
@@ -38,13 +36,16 @@ else {
       </div>
     </article>
 
-    <hr>
-
     <?php include ('parts/footer.php'); ?>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="menubar.js"></script>
     <script src="extras.js"></script>
+    <script>
+      $(document).ready(function() {
+          menu('main',"last");
+      });
+    </script>
 
   </body>
 </html>

@@ -8,3 +8,5 @@
     <li></li>
   </ul>
 </nav>
+
+<hr class="gradiant-sep">
