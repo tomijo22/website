@@ -28,13 +28,15 @@ else {
 
     <?php include ('parts/header.php'); ?>
 
-    <article>
-      <h1><?php printf($article['title']); ?></h1>
-      <div class="article_meta">publié le <?php echo strftime("%e %B %Y", strtotime($article['date'])); ?> dans <?php printf($article['cat']); ?></div>
-      <div class="article_body">
-        <?php printf($article_body); ?>
-      </div>
-    </article>
+    <div class="content">
+      <article>
+        <h1><?php printf($article['title']); ?></h1>
+        <div class="article_meta">publié le <?php echo strftime("%e %B %Y", strtotime($article['date'])); ?> dans <?php printf($article['cat']); ?></div>
+        <div class="article_body">
+          <?php printf($article_body); ?>
+        </div>
+      </article>
+    </div>
 
     <?php include ('parts/footer.php'); ?>
 

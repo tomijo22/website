@@ -19,7 +19,7 @@ function menu(name,currPage) {
     $('#main_navbar').addClass('animated fadeOut');
     $('#main_navbar').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
 
-      $.getJSON("menu.json", function(json) {
+      $.getJSON("menu.php", function(json) {
         var result = "";
 
         $.each(json[name], function(key,data) {
