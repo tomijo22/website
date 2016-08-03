@@ -1,7 +1,8 @@
 <?php
 include 'functions.php';
 define('nb_articles_per_page', 3);
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
 $db = db_connect();
 
@@ -42,10 +43,9 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
 
   </head>
   <body>
-
     <?php include ('parts/header.php'); ?>
 
-    <div id="content">
+      <div id="content">
 
       <div class="cat_heading">
         <h2><?php printf(ucfirst($cat_name)); ?></h1>
@@ -70,10 +70,10 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
       <?php
 
       if ($nb_articles_in_cat == 0) {
-        echo "<div class=\"info\"><p>Aucun article dans cette catégorie...</p></div>";
+        echo "<div class=\"cat_error\"><p>Aucun article dans cette catégorie...</p></div>";
       }
       else if ($num_page < 1 || $num_page > $nb_pages_for_cat) {
-        echo "<div class=\"info\"><p>Cette page n'existe pas...</p></div>"; // FIXME: maybe redirect to 404 or personalised error page
+        header("Location: " . $config['root_addr'] . "error.php?e=404");
       }
       else {
 
@@ -82,12 +82,12 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
           if (isset($data[$j])) {
             ?>
 
-              <article>
+              <article class="preview">
                 <h1><?php printf($data[$j]['title']); ?></h1>
                 <div class="article_meta">publié le <abbr title="<?php echo "à " . strftime("%H:%M", strtotime($data[$j]['time'])) . ' (UTC)'; ?>"><?php echo strftime("%e %B %Y", strtotime($data[$j]['date'])); ?></abbr></div>
                 <div class="article_body">
                   <p><?php printf($data[$j]['short_desc']); ?></p>
-                  <p class="article_read_more"><a href="">lire en entier...</a></p>
+                  <p class="article_read_more"><a href="<?php printf($config['root_addr'] . "?a=" .$data[$j]['id']); ?>">lire en entier...</a></p>
                 </div>
               </article>
               <hr class="plain-sep">
@@ -112,8 +112,7 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
     }
 
   ?>
-
-
+      <!--<div class="push"></div>-->
     </div>
 
     <?php include ('parts/footer.php'); ?>

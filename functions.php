@@ -18,16 +18,54 @@ function db_connect()
 
 }
 
-function get_last_article($db)
+function get_article($id)
 {
-  $response = $db->query('SELECT * FROM `articles` ORDER BY id DESC');
-  $data = $response->fetch();
-  return $data;
+  $db = db_connect();
+  if ($db == false) {
+    $return = array('error' => true,
+                    'code' => 1);
+    return $return;
+  }
+  else {
+    if (intval($id) > 0)
+    {
+      $response = $db->query('SELECT * FROM `articles` WHERE ID = ' . $db->quote($id));
+      $data=$response->fetchAll();
+
+      if ($response==false OR count($data)==0) {
+        $return = array('error' => true,
+                        'code' => 0);
+        return $return;
+      }
+      else {
+        $return = array_merge(array('error' => false), $data[0]);
+        return $return;
+      }
+    }
+    else {
+      $response = $db->query('SELECT * FROM `articles` ORDER BY id DESC');
+      $data = $response->fetch();
+
+      if ($data==false) {
+        $return = array('error' => true,
+                        'code' => 0);
+        return $return;
+      }
+      else {
+        $return = array_merge(array('error' => false), $data);
+        return $return;
+      }
+
+    }
+
+  }
+
 }
 
 function get_articles_cat()
 {
-  $file = file_get_contents("menu.json");
+  global $config;
+  $file = file_get_contents($config['root_addr'] . "menu.php");
   $list = json_decode($file,true)["articles"];
   unset($list["retour"]);
   $result = array(0 => null);

@@ -2,7 +2,7 @@
 
 /* BEGIN VARIOUS IMPORTS SECTION */
 
-@import url("https://fonts.googleapis.com/css?family=Cabin|Oswald|Oxygen|Titillium+Web");
+@import url("https://fonts.googleapis.com/css?family=Cabin|Oswald|Oxygen|Titillium+Web|Creepster");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css");
 @import "octicons/octicons.css";
 
@@ -22,7 +22,21 @@ html {
   min-height: 100%;
 }
 body {
-  margin: 0 0 40px; /* bottom = footer height */
+  margin: 0 0 40px; /* bottom = footer height*/
+}
+
+#content {
+  min-height: calc(100vh - 230px);
+}
+
+.center_content {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+* {
+  margin: 0;
 }
 
 /* END GLOBAL PROPERTIES SECTION */
@@ -31,19 +45,19 @@ body {
 
 header {
   text-align: center;
+  height: 185px;
 }
 
 header > h1 {
   font-family: 'Titillium Web', sans-serif;
-  margin-bottom: 0;
   width: 180px;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 20px;
 }
 
 header > h2 {
   font-family: 'Titillium Web', sans-serif;
-  margin-top: 2px;
   color: #555;
   font-size: 1.17em;
   font-weight: bold;
@@ -51,8 +65,8 @@ header > h2 {
 
 nav
 {
-  margin-top: 30px;
-  margin-bottom: 25px;
+  padding-top: 35px;
+  padding-bottom: 30px;
   text-align: center;
   font-family: 'Cabin', sans-serif;
   color: #555;
@@ -118,21 +132,24 @@ hr.plain-sep {
   border: 0;
   height: 1px;
   background-color: #555;
+
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* BEGIN ARTICLE SECTION */
 
-article
+article.full
 {
-  margin-top: 25px;
-  margin-bottom: 20px;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 article > h1
 {
   font-family: 'Oswald', sans-serif;
   text-align: center;
-  margin-bottom: 5px;
+  padding-bottom: 2px;
 }
 
 .article_meta
@@ -140,6 +157,7 @@ article > h1
   font-family: 'Oxygen', sans-serif;
   font-size: 0.85em;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .article_meta abbr {
@@ -155,7 +173,7 @@ article > h1
   margin-right: auto;
   text-align: center;
   line-height: 1.7em;
-  padding-bottom: 10px; /* spacing between the end of the article and the footer */
+   /* spacing between the end of the article and the footer */
 }
 
 /* END ARTICLE SECTION */
@@ -164,64 +182,93 @@ article > h1
 
 .cat_heading {
   text-align: center;
-  margin-bottom: 15px;
+  padding-top: 15px;
+  padding-bottom: 10px;
 }
 
 .cat_heading h2 {
   color: black;
   font-family: 'Oxygen', sans-serif;
   font-size: 1.75em;
-  margin-bottom: 0;
-
 }
 
 .cat_heading .sub {
   color: #555;
   font-family: 'Oxygen', sans-serif;
   font-size: 0.9em;
-  margin-top: 5px;
+  padding-top: 5px;
+}
+
+article.preview
+{
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
+.article_read_more
+{
+  padding-top: 5px;
 }
 
 /* END LIST SECTION */
 
 /* BEGIN CONTEXT SECTION */
 
-.info_list {
-  color: #555;
+.cat_error {
+
   font-family: 'Oxygen', sans-serif;
   font-size: 1em;
-  padding-top: 18vh; /* FIXME */
+  color: #555;
+  text-align: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height: calc(100vh - 310px);
+
+}
+
+.error {
   text-align: center;
 }
 
-.info_art {
-  color: #555;
-  font-family: 'Oxygen', sans-serif;
-  font-size: 1em;
-  padding-top: 28vh; /* FIXME */
-  text-align: center;
+.error > h2 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 50px;
 }
 
+.error > p {
+  padding-top: 10px;
 
+  font-family: 'Titillium Web', sans-serif;
+  color: black;
+  font-size: 1.1em;
+  font-weight: 300;
+}
+
+.error .err_code {
+  color: #9a9a9a;
+}
 /* END CONTEXT SECTION /*
 
 /* BEGIN FOOTER SECTION */
 
 footer
 {
-  /* awesome "sticky footer" by http://stackoverflow.com/a/29090569 */
+  /* "sticky footer" by http://stackoverflow.com/a/29090569 */
   position: absolute;
   left: 0;
   bottom: 0;
   height: 40px;
   width: 100%;
+}
 
+footer p {
   font-family: 'Titillium Web', sans-serif;
   font-size: 0.9em;
   text-align: center;
-  margin-bottom: 5px;
+  padding-top: 7px;
   color: #9a9a9a;
-  height: 40px;
 }
 
 footer > .heart
