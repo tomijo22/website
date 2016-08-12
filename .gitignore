@@ -1,4 +1,10 @@
+# config.beta.php is the main config file
+# art is the folder containing the articles organized by categories
+# pgs is the folder containing the pages
+# files containing ~ are ignored as well as main.php which is a debug file that will be removed in the first release
+
 config.beta.php
 art/*
 main.php
 *.*~
+pgs/*

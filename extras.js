@@ -3,3 +3,9 @@ $("#site_title").hover(function() {
 }, function() {
   $('#site_title').removeClass('animated pulse');
 });
+
+function calcAge(a) {
+  var date = +new Date(a);
+  var age = (Date.now() - date) / (31557600000);
+  document.getElementById('calcAge').innerHTML=age.toFixed(7);
+}

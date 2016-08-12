@@ -1,15 +1,15 @@
 <?php
 include 'functions.php';
 define('nb_articles_per_page', 3);
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+
 
 $db = db_connect();
 
 $categories_list = get_articles_cat();
 
 if (isset($_GET['c']) == false || $categories_list[ intval($_GET['c']) ] == null) {
-  exit(-1); // TODO: UI improvements
+  header("Location: " . $config['root_addr'] . "error.php?e=404");
+  die();
 }
 
 if (!isset($_GET['p']) || intval($_GET['p'])==0)
@@ -48,7 +48,7 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
       <div id="content">
 
       <div class="cat_heading">
-        <h2><?php printf(ucfirst($cat_name)); ?></h1>
+        <h2><?php printf(ucfirst($cat_name)); ?></h2>
         <div class="sub">
           <?php
           switch ($nb_articles_in_cat) {

@@ -178,6 +178,21 @@ article > h1
 
 /* END ARTICLE SECTION */
 
+/* BEGIN PAGE SECTION */
+
+article.page_body {
+  font-family: 'Oxygen', sans-serif;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  /*line-height: 1.7em;*/
+}
+
+/* END PAGE SECTION */
+
 /* BEGIN LIST SECTION */
 
 .cat_heading {

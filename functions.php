@@ -62,6 +62,44 @@ function get_article($id)
 
 }
 
+function get_page($id)
+{
+  $db = db_connect();
+  if ($db == false) {
+    $return = array('error' => true,
+                    'code' => 1);
+    return $return;
+  }
+  else {
+    $pages_list = array('whoami');
+
+    if (in_array($id, $pages_list)) {
+
+      $response = $db->query('SELECT * FROM `pages` WHERE `key` LIKE ' . $db->quote($id));
+      $data=$response->fetchAll();
+
+      if ($response==false OR count($data)==0) {
+        $return = array('error' => true,
+                        'code' => 2);
+        return $return;
+      }
+      else {
+        $return = array_merge(array('error' => false), $data[0]);
+        return $return;
+      }
+
+    }
+
+    else {
+      $return = array('error' => true,
+                      'code' => 0);
+      return $return;
+    }
+
+  }
+
+}
+
 function get_articles_cat()
 {
   global $config;
