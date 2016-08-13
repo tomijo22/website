@@ -93,6 +93,9 @@ nav > ul
     margin-bottom: 7px;
     /* this adds a margin between two lines of menu items on small definition screens*/
   }
+  nav {
+    padding-bottom: 10px; /* prevents the hr to be on the title */
+  }
 }
 
 .nav_lastitem
@@ -168,12 +171,26 @@ article > h1
 .article_body
 {
   font-family: 'Oxygen', sans-serif;
-  width: 65%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
   line-height: 1.7em;
    /* spacing between the end of the article and the footer */
+}
+
+@media screen and (max-width: 640px) {
+  article > h1 {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .article_body {
+    width: 90%;
+  }
+  article.full {
+    padding-top: 25px !important;
+  }
 }
 
 /* END ARTICLE SECTION */
@@ -191,6 +208,12 @@ article.page_body {
   /*line-height: 1.7em;*/
 }
 
+@media screen and (max-width: 640px) {
+  article.page_body {
+    width: 90%;
+  }
+}
+
 /* END PAGE SECTION */
 
 /* BEGIN LIST SECTION */
@@ -200,6 +223,14 @@ article.page_body {
   padding-top: 15px;
   padding-bottom: 10px;
 }
+
+@media screen and (max-width: 640px) {
+  .cat_heading {
+    padding-top: 25px !important;
+  }
+}
+
+
 
 .cat_heading h2 {
   color: black;

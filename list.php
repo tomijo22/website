@@ -2,14 +2,12 @@
 include 'functions.php';
 define('nb_articles_per_page', 3);
 
-
 $db = db_connect();
 
 $categories_list = get_articles_cat();
 
 if (isset($_GET['c']) == false || $categories_list[ intval($_GET['c']) ] == null) {
-  header("Location: " . $config['root_addr'] . "error.php?e=404");
-  die();
+  redir_to_err_page(0);
 }
 
 if (!isset($_GET['p']) || intval($_GET['p'])==0)
@@ -112,7 +110,7 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
     }
 
   ?>
-      <!--<div class="push"></div>-->
+
     </div>
 
     <?php include ('parts/footer.php'); ?>
@@ -123,7 +121,11 @@ $nb_pages_for_cat = ceil($nb_articles_in_cat/nb_articles_per_page);
     <script src="extras.js"></script>
     <script>
       $(document).ready(function() {
-          menu('articles',<?php printf('\'' . $cat_name . '\''); ?>);
+          menu('articles',<?php printf('\'' . $cat_name . '\''); ?>,false);
+      });
+      // workaround found there : http://stackoverflow.com/a/32864474
+      $(document).on('click', '.link', function () {
+          menu($(this).data("location"),<?php printf('\'' . $cat_name . '\''); ?>,true);
       });
     </script>
 

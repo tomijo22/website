@@ -15,7 +15,7 @@ $json_root['main']['github'] = 'https://github.com/darkgallium';
 
 $json_root['articles']['politique'] = $config['root_addr'] . 'list.php?c=1';
 $json_root['articles']['tribunes'] = $config['root_addr'] . 'list.php?c=2';
-$json_root['articles']['protips'] = $config['root_addr'] . 'list.php?c=3';
+$json_root['articles']['dossiers'] = $config['root_addr'] . 'list.php?c=3';
 $json_root['articles']['tutoriels'] = $config['root_addr'] . 'list.php?c=4';
 $json_root['articles']['testing'] = $config['root_addr'] . 'list.php?c=5';
 $json_root['articles']['inclassables'] = $config['root_addr'] . 'list.php?c=6';

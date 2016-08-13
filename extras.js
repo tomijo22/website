@@ -7,5 +7,6 @@ $("#site_title").hover(function() {
 function calcAge(a) {
   var date = +new Date(a);
   var age = (Date.now() - date) / (31557600000);
-  document.getElementById('calcAge').innerHTML=age.toFixed(7);
+  var rounded = age.toFixed(7);
+  document.getElementById('calcAge').innerHTML=rounded.replace(".",",");
 }

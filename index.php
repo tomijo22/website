@@ -11,29 +11,11 @@ if (isset($_GET['p'])) {
   $page = get_page($page_id);
 
   if ($page['error']===true) {
-    // TODO: create a dedicated function rather than two switches
-    switch ($page['code']) {
-      case 0:
-        header("Location: " . $config['root_addr'] . "error.php?e=404");
-        die();
-        break;
-
-      case 1:
-        header("Location: " . $config['root_addr'] . "error.php?e=500&c=db_connect");
-        die();
-        break;
-
-      case 2:
-        header("Location: " . $config['root_addr'] . "error.php?e=500&c=not_found_db");
-        die();
-        break;
-    }
-
+    redir_to_err_page($article['code']);
   }
 
   elseif (!file_exists($page['path']) || !preg_match("/" . str_replace('/','\/',$config['working_path']) . "pgs\/\w+\.php/",$page['path'])==1) {
-      header("Location: " . $config['root_addr'] . "error.php?e=500&c=file");
-      die();
+      redir_to_err_page(3);
   }
 
   else {
@@ -53,25 +35,11 @@ else {
   $article = get_article($article_id);
 
   if ($article['error']===true) {
-
-    switch ($article['code']) {
-      case 0:
-        header("Location: " . $config['root_addr'] . "error.php?e=404");
-        die();
-        break;
-
-      case 1:
-        header("Location: " . $config['root_addr'] . "error.php?e=500&c=db_connect");
-        die();
-        break;
-
-    }
-
+    redir_to_err_page($article['code']);
   }
 
   elseif (!file_exists($article['path']) || !preg_match("/" . str_replace('/','\/',$config['working_path']) . "art\/\w+\/\w+\.htm/",$article['path'])==1) {
-      header("Location: " . $config['root_addr'] . "error.php?e=500&c=file");
-      die();
+      redir_to_err_page(3);
   }
 
   else {
@@ -91,6 +59,8 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="main.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="extras.js"></script>
 
@@ -106,7 +76,7 @@ else {
         ?>
         <div id="content">
           <article class="full">
-            <h1><?php printf($article['title']); ?></h1>
+            <h1><?php printf(mb_strtoupper($article['title'])); ?></h1>
             <div class="article_meta">publié le <?php echo strftime("%e %B %Y", strtotime($article['date'])); ?> dans <a href="<?php echo $config['root_addr'] . "list.php?c=" . array_search($article['cat'],$categories_list) ?>"><?php printf($article['cat']); ?></a></div>
             <div class="article_body">
               <?php echo file_get_contents($article['path']); ?>
@@ -140,18 +110,24 @@ else {
     <?php
       if ($mode == 1) {
         if ($article_id == 0) {
-          printf("$(document).ready(function() { menu('main','last'); });");
+          $currPage = 'last';
         }
         else {
-          printf("$(document).ready(function() { menu('main',''); });");
+          $currPage = '';
         }
       }
       else {
         // FIXME: temporary
-          printf("$(document).ready(function() { menu('main','" . $page_id . "'); });");
+          $currPage = $page_id;
         }
-
     ?>
+    $(document).ready(function() {
+        menu('main',<?php printf('\'' . $currPage . '\''); ?>,false);
+    });
+    // workaround found there : http://stackoverflow.com/a/32864474
+    $(document).on('click', '.link', function () {
+        menu($(this).data("location"),<?php printf('\'' . $currPage . '\''); ?>,true);
+    });
     </script>
 
   </body>

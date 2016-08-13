@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/* BEGIN CONTACT PAGE SECTION */
+
+.banana {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.banana > img {
+  max-width: 100%;
+}
+
+/* END CONTACT PAGE SECTION */

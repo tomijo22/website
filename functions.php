@@ -71,7 +71,7 @@ function get_page($id)
     return $return;
   }
   else {
-    $pages_list = array('whoami');
+    $pages_list = array('whoami','contact');
 
     if (in_array($id, $pages_list)) {
 
@@ -111,5 +111,35 @@ function get_articles_cat()
     array_push($result,$key);
   }
   return $result;
+}
+
+function redir_to_err_page($err_code)
+{
+  switch ($err_code) {
+    case 0:
+      header("Location: " . $config['root_addr'] . "error.php?e=404");
+      die();
+      break;
+
+    case 1:
+      header("Location: " . $config['root_addr'] . "error.php?e=500&c=db_connect");
+      die();
+      break;
+
+    case 2:
+      header("Location: " . $config['root_addr'] . "error.php?e=500&c=not_found_db");
+      die();
+      break;
+
+    case 3:
+      header("Location: " . $config['root_addr'] . "error.php?e=500&c=file");
+      die();
+      break;
+
+    default:
+      header("Location: " . $config['root_addr'] . "error.php?e=500&c=undefined");
+      die();
+      break;
+  }
 }
 ?>
